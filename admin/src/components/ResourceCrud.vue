@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-02-29 15:09:05
- * @LastEditTime: 2020-03-01 19:50:59
+ * @LastEditTime: 2020-03-02 00:31:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\admin\src\views\courses\CoursesList.vue
@@ -12,9 +12,13 @@
     v-if="option.column"
     :data="data.data"
     :option="option"
+    :page="page"
     @row-save="create"
     @row-update="update"
     @row-del="remove"
+    @on-load="changePage"
+    @sort-change="changeSort"
+    @search-change="search"
     ></avue-crud>
   </div>
 </template>
@@ -27,10 +31,47 @@ import { getResourceList, getResourception, createResource, deleteResource } fro
 export default class ResourseList extends Vue {
     @Prop(String) public resource!: string;
     public data = {};
-    public option = {};
+    public option: any = {};
+    public page = {
+        total: 0,
+        pageSize: 2,
+        pageSizes: [2, 5, 10],
+    };
+    public query: any = {
+        limit: 2,
+    };
+    public async changePage({ pageSize, currentPage }: { pageSize: any, currentPage: any }) {
+        this.query.page = currentPage;
+        this.query.limit = pageSize;
+        this.fetch();
+    }
+    public async changeSort({prop, order}: {prop: any, order: any}) {
+        if (!order) {
+            this.query.sort === null;
+        } else {
+            this.query.sort = {
+                [prop]: order === 'ascending' ? 1 : -1,
+            };
+        }
+        this.fetch();
+    }
+    public async search(where: any, done: any) {
+        for (const k of Object.keys(where)) {
+            const field = this.option.column.find((item: any) => item.prop === k);
+            if (field.regex) {
+                where[k] = {
+                    $regex: where[k],
+                };
+            }
+        }
+        this.query.where = where;
+        await this.fetch();
+        done();
+    }
     public async fetch() {
-        const res: any = await getResourceList(this.resource);
+        const res: any = await getResourceList(this.resource, this.query);
         this.data = res.data;
+        this.page.total = res.data.total;
     }
     public async created() {
         this.fetch();

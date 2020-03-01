@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-02-28 20:24:10
- * @LastEditTime: 2020-03-01 19:34:29
+ * @LastEditTime: 2020-03-02 00:18:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\serve\apps\admin\src\courses\courses.controller.ts
@@ -28,7 +28,7 @@ export class CoursesController {
         return {
             title: '课程管理',
             column: [
-                { prop: 'name', label: '课程名称' },
+                { prop: 'name', label: '课程名称', sortable: true, search: true, regex: true },
                 { prop: 'cover', label: '课程封面' },
             ],
         }
