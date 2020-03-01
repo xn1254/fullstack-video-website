@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-02-28 16:23:01
- * @LastEditTime: 2020-02-28 18:17:35
+ * @LastEditTime: 2020-02-29 16:15:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\serve\apps\admin\src\main.ts
@@ -12,6 +12,9 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  // 允许跨域
+  app.enableCors()
 
   // 自动生成swagger接口文档
   const options = new DocumentBuilder()

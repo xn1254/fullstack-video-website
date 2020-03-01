@@ -1,12 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2020-02-28 17:02:45
- * @LastEditTime: 2020-02-28 20:31:30
+ * @LastEditTime: 2020-03-01 20:12:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\serve\apps\admin\src\users\users.controller.ts
  */
-import { Controller, Injectable } from '@nestjs/common';
+import { Controller, Injectable, Get } from '@nestjs/common';
 import { InjectModel } from 'nestjs-typegoose';
 // 依赖注入模型只需要关心表结构，框架自动根据类结构生成对应的表
 import { User } from '@lib/db/models/user.model';
@@ -26,4 +26,14 @@ export class UsersController {
         // 通过依赖注入将数据模型注入到model这个变量上
         @InjectModel(User) private readonly model: ReturnModelType<typeof User>
     ) {}
+
+    @Get('option')
+    option() {
+        return {
+            title: '用户管理',
+            column: [
+                { prop: 'username', label: '用户名' },
+            ],
+        }
+    }
 }
