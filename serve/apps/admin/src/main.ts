@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-02-28 16:23:01
- * @LastEditTime: 2020-02-29 16:15:25
+ * @LastEditTime: 2020-03-02 14:06:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\serve\apps\admin\src\main.ts
@@ -11,6 +11,7 @@ import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
+  // 选择基于NestExpressApplication的文件存储机制
   const app = await NestFactory.create(AppModule);
 
   // 允许跨域

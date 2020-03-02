@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-02-28 16:46:40
- * @LastEditTime: 2020-02-28 20:21:35
+ * @LastEditTime: 2020-03-02 14:25:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\serve\libs\db\src\models\user.model.ts
@@ -24,9 +24,4 @@ export class Course {
     @prop()
     @ApiProperty({description: '课程封面'})
     cover: string
-
-    // 定义数组类型的表字段
-    @arrayProp({ itemsRef: 'Eposide' }) // 字符串Eposide避免循环引用的问题
-    @ApiProperty({description: '课时'})
-    episode: Ref<Episode>[]
 }
