@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-02-28 16:23:01
- * @LastEditTime: 2020-03-02 14:06:15
+ * @LastEditTime: 2020-03-02 16:38:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\serve\apps\admin\src\main.ts
@@ -26,6 +26,8 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api-docs', app, document);
 
-  await app.listen(3000);
+  const PORT = process.env.ADMIN_PORT || 3000
+  await app.listen(PORT);
+  console.log(PORT)
 }
 bootstrap();

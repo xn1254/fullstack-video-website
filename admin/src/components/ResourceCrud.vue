@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-02-29 15:09:05
- * @LastEditTime: 2020-03-02 00:31:16
+ * @LastEditTime: 2020-03-02 17:13:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\admin\src\views\courses\CoursesList.vue
@@ -40,12 +40,12 @@ export default class ResourseList extends Vue {
     public query: any = {
         limit: 2,
     };
-    public async changePage({ pageSize, currentPage }: { pageSize: any, currentPage: any }) {
+    public async changePage({ pageSize, currentPage }) {
         this.query.page = currentPage;
         this.query.limit = pageSize;
         this.fetch();
     }
-    public async changeSort({prop, order}: {prop: any, order: any}) {
+    public async changeSort({prop, order}) {
         if (!order) {
             this.query.sort === null;
         } else {
@@ -55,9 +55,9 @@ export default class ResourseList extends Vue {
         }
         this.fetch();
     }
-    public async search(where: any, done: any) {
+    public async search(where, done) {
         for (const k of Object.keys(where)) {
-            const field = this.option.column.find((item: any) => item.prop === k);
+            const field = this.option.column.find((item) => item.prop === k);
             if (field.regex) {
                 where[k] = {
                     $regex: where[k],
@@ -78,14 +78,14 @@ export default class ResourseList extends Vue {
         const res = await getResourception(this.resource);
         this.option = res.data;
     }
-    public async create(row: any, done: any) {
+    public async create(row, done) {
         const method = 'POST';
         await createResource(this.resource, method, row);
         this.$message.success('保存成功');
         this.fetch();
         done();
     }
-    public async update(row: any, index: any, done: any) {
+    public async update(row, index, done) {
         const data = JSON.parse(JSON.stringify(row));
         delete data.$index;
         const method = 'PUT';
@@ -94,7 +94,7 @@ export default class ResourseList extends Vue {
         this.fetch();
         done();
     }
-    public async remove(row: any, index: any) {
+    public async remove(row) {
         try {
             await this.$confirm('是否确认删除?');
         } catch (e) {

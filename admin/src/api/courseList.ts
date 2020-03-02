@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-02-29 15:29:48
- * @LastEditTime: 2020-03-01 21:13:31
+ * @LastEditTime: 2020-03-02 16:59:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\admin\src\aip\courseList.ts
@@ -28,7 +28,7 @@ export const getResourception = (url: string): AxiosPromise<ResponseData> => {
 };
 
 // 新增和编辑请求合并
-export const createResource = (url: string, methodName: string, postData: any, id: string = ''): AxiosPromise<ResponseData> => {
+export const createResource = (url: string, methodName: string, postData, id: string = ''): AxiosPromise<ResponseData> => {
     return axios.request({
         url: `${url}/${id}`,
         method: methodName,
