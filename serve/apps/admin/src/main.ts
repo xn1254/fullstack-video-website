@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-02-28 16:23:01
- * @LastEditTime: 2020-03-02 16:38:45
+ * @LastEditTime: 2020-03-03 15:53:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\serve\apps\admin\src\main.ts
@@ -28,6 +28,5 @@ async function bootstrap() {
 
   const PORT = process.env.ADMIN_PORT || 3000
   await app.listen(PORT);
-  console.log(PORT)
 }
 bootstrap();

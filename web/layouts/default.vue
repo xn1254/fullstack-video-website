@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-02 19:51:30
- * @LastEditTime: 2020-03-02 21:18:03
+ * @LastEditTime: 2020-03-03 15:44:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\web\layouts\default.vue
@@ -86,9 +86,6 @@
 
 <script>
 export default {
-  props: {
-    source: String
-  },
   data: () => ({
     drawer: null,
     items: [

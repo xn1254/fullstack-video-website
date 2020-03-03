@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-02-28 20:39:20
- * @LastEditTime: 2020-03-02 14:52:21
+ * @LastEditTime: 2020-03-03 15:56:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\serve\apps\admin\src\episodes\episodes.controller.ts
@@ -38,7 +38,7 @@ export class EpisodesController {
             column: [
                 { prop: 'course', label: '所属课程', type: 'select', dicData: courses, row: true },
                 { prop: 'name', label: '课时名称', row: true },
-                { prop: 'file', label: '上传视频', type: 'upload', row: true, action: 'upload' }
+                { prop: 'file', label: '上传视频', width: 120, listType: 'picture-img', type: 'upload', row: true, action: 'upload' }
             ],
         }
     }

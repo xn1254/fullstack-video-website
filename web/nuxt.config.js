@@ -1,12 +1,15 @@
 /*
  * @Author: your name
  * @Date: 2020-03-02 19:51:30
- * @LastEditTime: 2020-03-02 20:31:29
- * @LastEditors: your name
+ * @LastEditTime: 2020-03-03 14:28:02
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\web\nuxt.config.js
  */
 import colors from 'vuetify/es5/util/colors'
+// 配置nuxt读取环境变量预设参数
+import dotenv from 'dotenv'
+dotenv.config()
 
 export default {
   mode: 'universal',
