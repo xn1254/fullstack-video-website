@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-02-28 16:23:01
- * @LastEditTime: 2020-03-03 15:53:58
+ * @LastEditTime: 2020-03-12 20:20:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\serve\apps\admin\src\main.ts
@@ -20,8 +20,9 @@ async function bootstrap() {
   // 自动生成swagger接口文档
   const options = new DocumentBuilder()
     .setTitle('fullsatck-video-web接口文档')
-    .setDescription('供管理后台与web端调用的接口文档')
+    .setDescription('供网站与app端调用的接口文档')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api-docs', app, document);
