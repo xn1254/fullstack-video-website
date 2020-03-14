@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-03-02 19:51:30
- * @LastEditTime: 2020-03-03 14:28:02
+ * @LastEditTime: 2020-03-14 16:06:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\web\nuxt.config.js
@@ -60,6 +60,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    '@nuxtjs/auth',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv'
   ],
@@ -68,6 +69,20 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+  // 配置登录策略
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/auth/login', method: 'post',},
+          logout: { url: '/auth/logout', method: 'post' },
+          user: { url: '/auth/user', method: 'get', propertyName: false}
+        },
+        // tokenRequired: true,
+        // tokenType: 'bearer'
+      }
+    }
+  },
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module

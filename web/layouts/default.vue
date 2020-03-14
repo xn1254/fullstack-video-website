@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-02 19:51:30
- * @LastEditTime: 2020-03-03 15:44:07
+ * @LastEditTime: 2020-03-14 16:10:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\web\layouts\default.vue
@@ -39,12 +39,12 @@
             <v-list-item-title v-text="item.text" />
           </v-list-item>
         </v-list>
-        <v-list-item class="mt-4" link>
+        <v-list-item class="mt-4" @click="isShowLoginForm = true">
           <v-list-item-action>
-            <v-icon color="grey darken-1">mdi-plus-circle-outline</v-icon>
+            <v-icon color="grey darken-1">mdi-lock</v-icon>
           </v-list-item-action>
           <v-list-item-title class="grey--text text--darken-1"
-            >Browse Channels</v-list-item-title
+            >登录</v-list-item-title
           >
         </v-list-item>
         <v-list-item link>
@@ -81,12 +81,33 @@
       <!-- 类似于vue的router-view -->
       <nuxt-child></nuxt-child>
     </v-content>
+
+    <v-bottom-sheet v-model="isShowLoginForm" inset>
+      <v-form class="pa-4" @submit.prevent="login">
+        <v-text-field
+          v-model="loginModel.username"
+          label="用户名"
+        ></v-text-field>
+        <v-text-field
+          v-model="loginModel.password"
+          label="密码"
+          type="password"
+          autocomplete="new-password"
+        ></v-text-field>
+        <v-btn color="success" type="submit">登录</v-btn>
+      </v-form>
+    </v-bottom-sheet>
   </v-app>
 </template>
 
 <script>
 export default {
   data: () => ({
+    isShowLoginForm: false,
+    loginModel: {
+      username: '',
+      password: ''
+    },
     drawer: null,
     items: [
       { icon: 'home', text: '首页', link: '/' },
@@ -103,6 +124,12 @@ export default {
   }),
   created() {
     this.$vuetify.theme.dark = true
+  },
+  methods: {
+    async login() {
+      await this.$auth.loginWith('local', { data: this.loginModel })
+      this.isShowLoginForm = false
+    }
   }
 }
 </script>
