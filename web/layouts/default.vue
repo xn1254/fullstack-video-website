@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-02 19:51:30
- * @LastEditTime: 2020-03-14 16:10:26
+ * @LastEditTime: 2020-03-14 19:13:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\web\layouts\default.vue
@@ -39,7 +39,15 @@
             <v-list-item-title v-text="item.text" />
           </v-list-item>
         </v-list>
-        <v-list-item class="mt-4" @click="isShowLoginForm = true">
+        <v-list-item v-if="$store.state.auth.user.username" class="mt-4">
+          <v-list-item-action>
+            <v-icon color="grey darken-1">mdi-user</v-icon>
+          </v-list-item-action>
+          <v-list-item-title class="grey--text text--darken-1"
+            >欢迎您:{{ $store.state.auth.user.username }}</v-list-item-title
+          >
+        </v-list-item>
+        <v-list-item v-else class="mt-4" @click="isShowLoginForm = true">
           <v-list-item-action>
             <v-icon color="grey darken-1">mdi-lock</v-icon>
           </v-list-item-action>
