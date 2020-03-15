@@ -11,7 +11,7 @@ import { CollectionController } from './collection.controller';
 
 @Module({
     controllers: [
-        CollectionController
+        CollectionController,
     ]
 })
 export class CollectionModule {}
