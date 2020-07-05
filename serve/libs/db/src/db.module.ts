@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-02-28 16:29:46
- * @LastEditTime: 2020-03-15 13:37:45
+ * @LastEditTime: 2020-03-21 17:53:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\serve\libs\db\src\db.module.ts
@@ -12,14 +12,14 @@ import { TypegooseModule } from 'nestjs-typegoose'
 import { User } from './models/user.model';
 import { Course } from './models/course.model';
 import { Episode } from './models/episode.model';
-import { Liked } from './models/liked.model';
+import { Action } from './models/action.model';
 
 // 全局引用数据模型生成对应的数据表
 const Models = TypegooseModule.forFeature([
   User,
   Course,
   Episode,
-  Liked
+  Action
 ])
 
 @Global()
