@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-02 19:51:30
- * @LastEditTime: 2020-03-14 19:13:37
+ * @LastEditTime: 2020-07-12 18:28:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\web\layouts\default.vue
@@ -39,7 +39,7 @@
             <v-list-item-title v-text="item.text" />
           </v-list-item>
         </v-list>
-        <v-list-item v-if="$store.state.auth.user.username" class="mt-4">
+        <!-- <v-list-item v-if="$store.state.auth.user.username" class="mt-4">
           <v-list-item-action>
             <v-icon color="grey darken-1">mdi-user</v-icon>
           </v-list-item-action>
@@ -54,7 +54,7 @@
           <v-list-item-title class="grey--text text--darken-1"
             >登录</v-list-item-title
           >
-        </v-list-item>
+        </v-list-item> -->
         <v-list-item link>
           <v-list-item-action>
             <v-icon color="grey darken-1">mdi-settings</v-icon>
@@ -66,23 +66,28 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app clipped-left color="red" dense>
+    <v-app-bar app clipped-left dense flat>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-icon class="mx-4">fab fa-youtube</v-icon>
+      <v-icon class="mx-4 blue--text">landscape</v-icon>
       <v-toolbar-title class="mr-12 align-center">
-        <span class="title">视频网站</span>
+        <span class="subtitle1 font-weight-bold">视频网站</span>
       </v-toolbar-title>
       <v-spacer />
-      <v-row align="center" style="max-width: 650px">
+      <v-row align="center" style="max-width: 30vw">
         <v-text-field
           :append-icon-cb="() => {}"
           placeholder="搜索..."
           single-line
+          filled
+          rounded
+          dense
           append-icon="search"
           color="white"
           hide-details
         />
       </v-row>
+      <v-spacer />
+      <v-switch v-model="$vuetify.theme.dark" hide-details></v-switch>
     </v-app-bar>
 
     <v-content>
@@ -113,8 +118,8 @@ export default {
   data: () => ({
     isShowLoginForm: false,
     loginModel: {
-      username: '',
-      password: ''
+      username: '1',
+      password: '1'
     },
     drawer: null,
     items: [
@@ -131,7 +136,7 @@ export default {
     ]
   }),
   created() {
-    this.$vuetify.theme.dark = true
+    this.$vuetify.theme.dark = false
   },
   methods: {
     async login() {

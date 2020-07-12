@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-02 21:17:01
- * @LastEditTime: 2020-03-03 15:43:40
+ * @LastEditTime: 2020-07-12 22:31:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\web\pages\courses\index.vue
@@ -23,7 +23,7 @@
           </v-card-subtitle>
 
           <v-card-actions>
-            <v-btn text>Share</v-btn>
+            <like-btn></like-btn>
 
             <v-btn color="purple" text>
               Explore
@@ -38,7 +38,11 @@
 </template>
 
 <script>
+import LikeBtn from '../../components/LikeBtn.vue'
 export default {
+  components: {
+    LikeBtn
+  },
   // nuxt需要通过异步请求先获取数据再渲染到模板上
   async asyncData({ $axios }) {
     const data = await $axios.$get('courses')

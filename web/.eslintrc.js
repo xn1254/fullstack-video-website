@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-03-11 22:18:58
- * @LastEditTime: 2020-03-14 14:09:20
- * @LastEditors: your name
+ * @LastEditTime: 2020-07-12 22:27:50
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\web\.eslintrc.js
  */

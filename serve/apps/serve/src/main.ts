@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-02-28 16:23:01
- * @LastEditTime: 2020-03-12 20:20:32
+ * @LastEditTime: 2020-07-12 18:02:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \video-fullstack-web\serve\apps\admin\src\main.ts
@@ -20,7 +20,7 @@ async function bootstrap() {
   // 自动生成swagger接口文档
   const options = new DocumentBuilder()
     .setTitle('fullsatck-video-web接口文档')
-    .setDescription('供网站与app端调用的接口文档')
+    .setDescription('供管理后台调用的接口文档')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
@@ -29,5 +29,6 @@ async function bootstrap() {
 
   const PORT = process.env.SERVER_PORT || 3001
   await app.listen(PORT);
+  console.log('http://localhost:3009/api-docs')
 }
 bootstrap();
